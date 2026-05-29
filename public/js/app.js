@@ -14,7 +14,7 @@ const data = {
     {zone:"Meeting Zone",seats:[{id:"S6",booked:false,releaseAt:null},{id:"S7",booked:false,releaseAt:null},{id:"S8",booked:false,releaseAt:null},{id:"S9",booked:false,releaseAt:null},{id:"S10",booked:false,releaseAt:null}]},
     {zone:"Collaboration Zone",seats:[{id:"S11",booked:false,releaseAt:null},{id:"S12",booked:false,releaseAt:null},{id:"S13",booked:false,releaseAt:null},{id:"S14",booked:false,releaseAt:null},{id:"S15",booked:false,releaseAt:null}]}
   ]},
-  "Student Central":{floor:3,totalSeats:120,occupiedSeats:90,zones:[
+  "Student Central":{floor:4,totalSeats:120,occupiedSeats:90,zones:[
     {zone:"Tech Zone",seats:[{id:"E1",booked:false,releaseAt:null},{id:"E2",booked:false,releaseAt:null},{id:"E3",booked:false,releaseAt:null},{id:"E4",booked:false,releaseAt:null},{id:"E5",booked:false,releaseAt:null}]},
     {zone:"Activity Zone",seats:[{id:"E6",booked:false,releaseAt:null},{id:"E7",booked:false,releaseAt:null},{id:"E8",booked:false,releaseAt:null},{id:"E9",booked:false,releaseAt:null},{id:"E10",booked:false,releaseAt:null}]},
     {zone:"Mac Zone",seats:[{id:"E11",booked:false,releaseAt:null},{id:"E12",booked:false,releaseAt:null},{id:"E13",booked:false,releaseAt:null},{id:"E14",booked:false,releaseAt:null},{id:"E15",booked:false,releaseAt:null}]}
