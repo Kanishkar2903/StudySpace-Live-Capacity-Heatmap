@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySpace HD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="header-badge">LIVE</div>
+    <h1>StudySpace Live Capacity Heatmap</h1>
+    <p>Smart Campus Real-Time Occupancy Monitoring</p>
+</header>
+
+<main>
+    <div class="cards-grid" id="cardsGrid"></div>
+</main>
+<button class="campus-map-fab" onclick="openCampusMap()">
+    🗺️ Campus Map
+</button>
+
+<div class="popup" id="campusMapPopup">
+    <div class="popup-content campus-map-popup-content">
+        <button class="close-btn" onclick="closeCampusMap()">&#x2715;</button>
+        <h2>Campus Map</h2>
+        <div class="campus-map-container">
+            <!-- Map SVG -->
+            <svg viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg" class="campus-svg">
+                <rect width="340" height="300" fill="#f0f4ec" rx="12"/>
+                <path d="M170 140 Q120 120 60 100" stroke="#ccc" stroke-width="8" fill="none" stroke-linecap="round"/>
+                <path d="M170 140 Q200 100 260 80" stroke="#ccc" stroke-width="8" fill="none" stroke-linecap="round"/>
+                <path d="M170 140 Q175 175 180 210" stroke="#ccc" stroke-width="8" fill="none" stroke-linecap="round"/>
+                <path d="M170 140 Q120 170 80 210" stroke="#ccc" stroke-width="8" fill="none" stroke-linecap="round"/>
+                <path d="M170 140 Q230 170 270 210" stroke="#ccc" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+                <circle cx="170" cy="140" r="18" fill="#dde4f0" stroke="#b0bcd8" stroke-width="2"/>
+                <circle cx="170" cy="140" r="9" fill="#b0bcd8"/>
+
+                <circle cx="140" cy="115" r="8" fill="#7ec87e" opacity="0.8"/>
+                <circle cx="200" cy="170" r="7" fill="#7ec87e" opacity="0.8"/>
+                <circle cx="95" cy="185" r="7" fill="#7ec87e" opacity="0.8"/>
+                <circle cx="245" cy="105" r="8" fill="#7ec87e" opacity="0.8"/>
+
+                <g id="map-library" class="map-building" onclick="handleMapClick('Library')">
+                    <rect x="30" y="50" width="60" height="44" rx="5" fill="#1e3a6e" opacity="0.85"/>
+                    <rect x="46" y="58" width="10" height="10" rx="2" fill="#a8c4ff" opacity="0.7"/>
+                    <rect x="64" y="58" width="10" height="10" rx="2" fill="#a8c4ff" opacity="0.7"/>
+                    <rect x="46" y="72" width="28" height="16" rx="2" fill="#7aa4e8" opacity="0.6"/>
+                    <text x="60" y="110" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" font-weight="700" fill="#1e3a6e">Central Library</text>
+                    <circle cx="60" cy="120" r="5" fill="#2d8a2d" id="map-dot-Library"/>
+                </g>
+
+                <g id="map-englab" class="map-building" onclick="handleMapClick('Computer Lab')">
+                    <rect x="248" y="38" width="60" height="44" rx="5" fill="#1e3a6e" opacity="0.85"/>
+                    <rect x="264" y="46" width="10" height="10" rx="2" fill="#a8c4ff" opacity="0.7"/>
+                    <rect x="282" y="46" width="10" height="10" rx="2" fill="#a8c4ff" opacity="0.7"/>
+                    <rect x="264" y="60" width="28" height="16" rx="2" fill="#7aa4e8" opacity="0.6"/>
+                    <text x="278" y="98" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" font-weight="700" fill="#1e3a6e">Computer Lab</text>
+                    <circle cx="278" cy="108" r="5" fill="#e8970a" id="map-dot-Computer Lab"/>
+                </g>
+
+                <g id="map-student" class="map-building" onclick="handleMapClick('Student Central')">
+                    <rect x="188" y="148" width="60" height="44" rx="5" fill="#1e3a6e" opacity="0.85"/>
+                    <rect x="204" y="156" width="10" height="10" rx="2" fill="#a8c4ff" opacity="0.7"/>
+                    <rect x="222" y="156" width="10" height="10" rx="2" fill="#a8c4ff" opacity="0.7"/>
+                    <rect x="204" y="170" width="28" height="16" rx="2" fill="#7aa4e8" opacity="0.6"/>
+                    <text x="218" y="208" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" font-weight="700" fill="#1e3a6e">Student Central</text>
+                    <circle cx="218" cy="218" r="5" fill="#2d8a2d" id="map-dot-Student Central"/>
+                </g>
+
+                <g id="map-science" class="map-building" onclick="handleMapClick('Study Hall')">
+                    <rect x="42" y="195" width="60" height="44" rx="5" fill="#1e3a6e" opacity="0.85"/>
+                    <rect x="58" y="203" width="10" height="10" rx="2" fill="#a8c4ff" opacity="0.7"/>
+                    <rect x="76" y="203" width="10" height="10" rx="2" fill="#a8c4ff" opacity="0.7"/>
+                    <rect x="58" y="217" width="28" height="16" rx="2" fill="#7aa4e8" opacity="0.6"/>
+                    <text x="72" y="255" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" font-weight="700" fill="#1e3a6e">Study Hall</text>
+                    <circle cx="72" cy="265" r="5" fill="#e8970a" id="map-dot-Study Hall"/>
+                </g>
+
+            </svg>
+
+            <div class="map-legend">
+                <div class="map-legend-item"><span class="map-legend-dot available-dot"></span> Available</div>
+                <div class="map-legend-item"><span class="map-legend-dot moderate-dot"></span> Filling Up</div>
+                <div class="map-legend-item"><span class="map-legend-dot full-dot"></span> Full</div>
+            </div>
+            <p class="map-tap-hint">Tap a building to view zones</p>
+        </div>
+    </div>
+</div>
+
+<div class="popup" id="zonePopup">
+    <div class="popup-content">
+        <button class="close-btn" onclick="closeZonePopup()">&#x2715;</button>
+        <h2 id="popupTitle"></h2>
+        <div id="zoneList"></div>
+    </div>
+</div>
+
+<div class="popup" id="seatPopup">
+    <div class="popup-content">
+        <button class="close-btn" onclick="closeSeatPopup()">&#x2715;</button>
+        <h2 id="seatTitle"></h2>
+        <div id="seatGrid"></div>
+    </div>
+</div>
+
+<div class="popup" id="timePopup">
+    <div class="popup-content">
+        <button class="close-btn" onclick="closeTimePopup()">&#x2715;</button>
+        <h2>Book a Seat</h2>
+        <div class="time-popup-seat">
+            <div class="time-popup-seat-icon">🪑</div>
+            <div class="time-popup-seat-info">
+                <div class="time-popup-seat-id" id="bookingSeatId"></div>
+                <div class="time-popup-seat-loc" id="bookingSeatLoc"></div>
+            </div>
+        </div>
+        <div class="time-label">Select Duration</div>
+        <div class="time-slots-grid">
+            <div class="time-slot" onclick="selectDuration(30, this)">30 min</div>
+            <div class="time-slot" onclick="selectDuration(60, this)">1 hour</div>
+            <div class="time-slot" onclick="selectDuration(90, this)">1.5 hrs</div>
+            <div class="time-slot" onclick="selectDuration(120, this)">2 hours</div>
+            <div class="time-slot" onclick="selectDuration(180, this)">3 hours</div>
+            <div class="time-slot" onclick="selectDuration(0, this)">Custom</div>
+        </div>
+        <div class="custom-time-wrap" id="customTimeWrap" style="display:none">
+            <div class="time-label">Custom end time</div>
+            <input type="time" class="custom-time-input" id="customTimeInput" oninput="onCustomTime()">
+        </div>
+        <button class="confirm-book-btn" id="confirmBookBtn" onclick="confirmBooking()" disabled>Confirm Booking</button>
+        <p class="duration-note" id="durationNote">Choose a duration above</p>
+    </div>
+</div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
